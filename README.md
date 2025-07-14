@@ -33,10 +33,10 @@ Default name is `"hierarchy_n"` in the non-symmetric case and `"hierarchy_(p,q)"
 The layout of the plotted graph is determined automatically by the tikz graph library, which does not always lead to the optimal results.
 Therefore we provide
 ```julia
-plot_hierarchy(hierarchy, ordering; labels=:default, fname = default_name(hierarchy), dir=pwd())
+plot_hierarchy(hierarchy; ordering=permutation_vector, labels=:default, fname = default_name(hierarchy), dir=pwd())
 ```
 Under the hood, each vertex (Young diagram) of the hierarchy graph has an integer code, which is basically an ordinal number of the vertex in the order the vertices were added to the graph.
-`ordering::Vector{Int}` is the permutation vector of vertex codes. The vertices and edges are sent to tikz in the order determined by the `ordering` vector, which allows to influence the resulting layout.
+`ordering=permutation_vector` specifies the permutation vector of vertex codes. The vertices and edges are sent to tikz in the order determined by the `ordering` vector, which allows to influence the resulting layout.
 
 To see the vertex codes in the plotted ".pdf" file, specify `labels=:Code`.
 Correspondingly, `labels=:default` specifies the default text representation of (signed) Young diagrams.

@@ -30,7 +30,7 @@ function build_hierarchy(p::Integer, q::Integer)
     return build_hierarchy(sp, "hierarchy of EPs with algebraic multiplicity $(p+q) for the ($p,$q)-pseudometric")
 end
 
-function build_hierarchy(p0::PT, hname::AbstractString="hierarchy of EPs starting with $(to_text(p))") where PT<:AbstractPartition
+function build_hierarchy(p0::PT, hname::AbstractString="hierarchy of EPs starting with $(to_text(p0))") where PT<:AbstractPartition
     hierarchy = MetaGraph(DiGraph(), PT, UInt8, Nothing, hname)
     stk = Stack{PT}()
 
