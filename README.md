@@ -48,6 +48,7 @@ To generate tikz graph in the publication quality, use
 manual_output_to_tex(hierarchy, layout_dict; output_to_file = false, fname = default_name(hierarchy), dir=pwd())
 ```
 This variant uses tikzcd library and allows to manually specify the layout of the plotted graph.
+It also nicely plots the Young diagrams as Young diagrams and not as strings.
 The vertices are arranged inside a regular matrix, the corresponding rows are computed automatically under the hood.
 So one only needs to specify the horizontal coordinates of the vertices in the matrix,
 which is done by specifying the layout dictionary of the form
