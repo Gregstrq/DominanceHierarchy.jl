@@ -1,4 +1,5 @@
 name = "DominanceHierarchy"
+uuid = "90c354df-f3f7-460b-aae1-5c6c49864f3a"
 authors = ["Grigory Starkov <grigorii.starkov@gmail.com>"]
 
 [deps]
