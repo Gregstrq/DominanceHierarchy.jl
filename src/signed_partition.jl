@@ -18,6 +18,21 @@ change(spb::SignedPartitionBlock, n, s) = SPB(spb[1]+n, spb[2]*s,1)
 
 struct SignedPartition <: AbstractPartition
     sp::Vector{SignedPartitionBlock}
+    function SignedPartition(sp::Vector{SignedPartitionBlock})
+        flag = false
+        if length(sp)>1
+            for i = 1:length(sp)-1
+                if isequal(sp[i],sp[i+1])
+                    flag = true
+                    break
+                end
+            end
+        end
+        if flag
+            error("Trying to construct not a valid SignedPartition out of $sp")
+        end
+        return new(sp)
+    end
 end
 SignedPartition(p::Int, q::Int) = SignedPartition([SPB(1,1,p), SPB(1,-1,q)])
 getindex(sp::SignedPartition, i) = sp.sp[i]
@@ -116,7 +131,7 @@ function move_right!(new_p, j₀)
         else
             break
         end
-        j₀ -= 1
+        j₀ += 1
     end
 end
 
@@ -130,7 +145,14 @@ function mutate_partition(sp::SignedPartition, I::NTuple{2,Integer}, mutation::N
 
     move_left!(new_p, i₀)
     move_right!(new_p, j₀)
-    return SignedPartition(filter(x->!is_scippable(x), new_p))
+    try
+        return SignedPartition(filter(x->!is_scippable(x), new_p))
+    catch e
+        if isa(e, ErrorException)
+            println("Error while mutating partition $sp with mutation $mutation at the index $I.")
+        end
+        rethrow(e)
+    end
 end
 
 function mutate_partition(sp::SignedPartition, i::Integer, mutation::NTuple{3,SignedPartitionBlock})
@@ -140,7 +162,14 @@ function mutate_partition(sp::SignedPartition, i::Integer, mutation::NTuple{3,Si
 
     move_left!(new_p, i₀)
     move_right!(new_p, j₀)
-    return SignedPartition(filter(x->!is_scippable(x), new_p))
+    try
+        return SignedPartition(filter(x->!is_scippable(x), new_p))
+    catch e
+        if isa(e, ErrorException)
+            println("Error while mutating partition $sp with mutation $mutation at the index $i.")
+        end
+        rethrow(e)
+    end
 end
 
 function get_mutated_partitions(sp::SignedPartition, I)
