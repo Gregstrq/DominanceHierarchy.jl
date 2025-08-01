@@ -8,6 +8,30 @@ For pseudo-Hermitian systems, one associates EPs with signed Young diagrams. The
 
 The package provides the means to construct the hierarchy of (signed) Young diagrams and plot the corresponding graph.
 
+# How to install
+
+To install this package, one may first clone the repository using
+```
+git clone https://github.com/Gregstrq/DominanceHierarchy.jl.git
+```
+and then open a terminal in the directory of the package to call
+
+```
+Julia
+
+Import Pkg
+Pkg.add(path="path_to_therepository/DominanceHierarchy.jl")
+```
+Alternatively, one many try
+```
+julia
+
+using Pkg
+Pkg.add(url="https://github.com/Gregstrq/DominanceHierarchy.jl.git")
+```
+
+Once the package has been successfully installed and compiled, use `using DominanceHierarchy` to load and use the package.
+
 
 
 ## Overview
@@ -66,6 +90,7 @@ By default, the function spews out the string with LaTeX code. If you capture th
 Alternatively, one can specify `output_to_file=true` and save it into a ".tex" file, which can then be included explicitly in the main file.
 
 ## Internals
+
 In the non-symmetric case, we define the `PartitionBlock` struct, which can be constructed as `PB(m, nc)`. It represents part of the Young diagram consisting of `nc` rows of the same length `m`.
 
 In the symmetric case, we define `SignedPartitionBlock` struct. It is constructed via `SPB(m, s, nc)` and describes the part of the signed Young diagram consisting of `nc` signed rows of the same length `m` and with the same sign `s`.
