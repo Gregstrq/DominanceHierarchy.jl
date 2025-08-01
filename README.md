@@ -8,6 +8,29 @@ For pseudo-Hermitian systems, one associates EPs with signed Young diagrams. The
 
 The package provides the means to construct the hierarchy of (signed) Young diagrams and plot the corresponding graph.
 
+## How to install
+To install this package, one should first clone the repository using
+```
+git clone https://github.com/Gregstrq/DominanceHierarchy.jl.git
+```
+Next, open a terminal in the directory of the package and call
+
+```
+Julia
+
+Import Pkg
+Pkg.add(path="path_to_therepository/DominanceHierarchy.jl")
+```
+alternatively, you can try
+```
+julia
+
+using Pkg
+Pkg.add(url="https://github.com/Gregstrq/DominanceHierarchy.jl.git")
+```
+
+Once the package has been successfully installed and compiled, use `using DominanceHierarchy` to load and use the package.
+
 
 
 ## Overview
