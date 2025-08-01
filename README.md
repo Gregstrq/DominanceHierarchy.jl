@@ -66,10 +66,29 @@ In the symmetric case, we define `SignedPartitionBlock` struct. It is constructe
 
 The type `Partition` (`SignedPartition`) is basically the vector of `PartitionBlock`-s (`SignedPartitionBlock`-s) ordered by decreasing `m` and by sign `s` (plus precedes minus). It represents the whole (signed) Young diagram.
 
+Let's say we want to create a Partition that corresponds to the `n`-th order diabolical point in the non-symmetric case. The corresponding Young diagram has `n` blocks of size `1`, therefore the corresponding partition consists of a single `PartitionBlock` and we can create it as
+```julia
+p = Partition([PB(1,n)])
+```
+Partition corresponding to the Young diagram `(5,5,4,4,4,3,2,1)` can be created as
+```julia
+p = Partition([PB(5,2), PB(4,3), PB(3,1), PB(2,1), PB(1,1)])
+```
+
+In the symmetric case, let us consider pseudometric with inertia `(p,q)` and a diabolical point of maximal order `(p+q)`. The corresponding signed Young diagram has `p` blocks of size `1` and sign `+` and `q` blocks of size `1` and sign `-`. We can create the `SignedPartition` as
+```julia
+sp = SignedPartition([SPB(1,1,p), SPB(1,-1,q)])
+```
+SignedPartition corresponding to the signed Young diagram `(5+,5+,4+,4+,4-,3+,2-,1-)` can be created as
+```julia
+sp = SignedPartition([SPB(5,1,2), SPB(4,1,2), SPB(4,-1,1), SPB(3,1,1), SPB(2,-1,1), SPB(1,-1,,1)])
+```
+
 One can also build the partial hierarchy consisting of the (signed) Young diagrams that dominate the given diagram:
 ```julia
-build_hierarchy(starting_partition)
+build_hierarchy(starting_partition, hname)
 ```
-Actually, under the hood `build_hierarchy(n)` effectively calls `build_hierarchy(Partition([PB(1,n)]))`, while `build_hierarchy(p,q)` effectively calls `build_hierarchy(SignedPartition([SPB(1,1,p), SPB(1,-1,q)]))`.
+Here, `hname` is the custom name for the hierarchy that can be provided if needed.
+Actually, under the hood `build_hierarchy(n)` effectively calls `build_hierarchy(Partition([PB(1,n)]))`, while `build_hierarchy(p,q)` effectively calls `build_hierarchy(SignedPartition([SPB(1,1,p), SPB(1,-1,q)]))`. (The names are generated automatically in these cases.)
 
 
