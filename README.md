@@ -8,7 +8,7 @@ For pseudo-Hermitian systems, one associates EPs with signed Young diagrams. The
 
 The package provides the means to construct the hierarchy of (signed) Young diagrams and plot the corresponding graph.
 
-# How to install
+## How to install
 
 To install this package, one may first clone the repository using
 ```
