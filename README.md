@@ -114,4 +114,7 @@ build_hierarchy(starting_partition, hname)
 Here, `hname` is the custom name for the hierarchy that can be provided if needed.
 Actually, under the hood `build_hierarchy(n)` effectively calls `build_hierarchy(Partition([PB(1,n)]))`, while `build_hierarchy(p,q)` effectively calls `build_hierarchy(SignedPartition([SPB(1,1,p), SPB(1,-1,q)]))`. (The names are generated automatically in these cases.)
 
+## Citation
+If you find this code useful in your work, please cite our article ``Converting non-Hermitian degeneracies of any order: Hierarchies of exceptional points and degeneracy manifolds'' Grigory A. Starkov and Sharareh Sayyad, [arXiv:2604.16139 (2026)](https://arxiv.org/abs/2604.16139).
+
 
